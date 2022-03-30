@@ -1,9 +1,9 @@
 package com.issoft.domain;
 
 public class Product {
-    public  String name;
-    public Double price;
-    public  Double rate;
+    private String name;
+    private Double price;
+    private Double rate;
 
 
     public  Product(String name, Double price, Double rate) {
