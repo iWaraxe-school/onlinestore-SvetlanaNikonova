@@ -1,4 +1,10 @@
 package com.issoft.domain.categories;
 
-public class MilkCategory {
+import com.issoft.domain.Category;
+
+public class MilkCategory extends Category {
+
+    public MilkCategory() {
+        super("Milk");
+    }
 }

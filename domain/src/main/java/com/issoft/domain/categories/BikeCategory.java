@@ -1,4 +1,10 @@
 package com.issoft.domain.categories;
 
-public class BikeCategory {
+import com.issoft.domain.Category;
+
+public class BikeCategory extends Category {
+
+    public BikeCategory() {
+        super("Bikes");
+    }
 }

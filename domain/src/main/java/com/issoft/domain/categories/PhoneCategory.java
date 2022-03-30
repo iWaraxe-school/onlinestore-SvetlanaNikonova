@@ -1,4 +1,13 @@
 package com.issoft.domain.categories;
 
-public class PhoneCategory {
+import com.issoft.domain.Category;
+
+public class PhoneCategory extends Category {
+
+
+    public PhoneCategory() {
+        super("Phones");
+    }
+
+
 }
