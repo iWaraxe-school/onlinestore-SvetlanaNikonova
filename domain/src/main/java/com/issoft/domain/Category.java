@@ -4,13 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Category {
-    private String name;
+    public String name;
     private List<Product> productList;
 
     public Category(String name) {
         this.name = name;
         this.productList = new ArrayList<>();
     }
+
+    public void addProduct(Product product) {
+
+    }
+
+
 
     public void printAllProducts() {
 

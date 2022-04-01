@@ -33,12 +33,12 @@ public class RandomStorePopulator {
               return faker.number().randomDouble(1,1, 5);
         }
 
-        public  String getName() {
+     //   public  String getName() {
 
-              return faker.name().username();
+        //      return faker.name().username();
         }
 
-}
+
 
 
 
