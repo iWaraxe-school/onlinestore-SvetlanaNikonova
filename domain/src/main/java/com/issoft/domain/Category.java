@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Category {
-    public String name;
-    private List<Product> productList;
+    private String name;
+    protected List<Product> productList;
 
     public Category(String name) {
         this.name = name;
@@ -13,7 +13,7 @@ public abstract class Category {
     }
 
     public void addProduct(Product product) {
-
+        this.productList.add(product);
     }
 
 
@@ -27,6 +27,10 @@ public abstract class Category {
         for (Product product : productList) {
             System.out.println(product.toString());
         }
+    }
+
+    public String getName(){
+        return this.name;
     }
 
 

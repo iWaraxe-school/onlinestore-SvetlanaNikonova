@@ -28,7 +28,7 @@ public class RandomStorePopulator {
               return faker.number().randomDouble(1, 1, 100);
         }
 
-        public  double getRate() {
+        public double getRate() {
 
               return faker.number().randomDouble(1,1, 5);
         }
