@@ -5,15 +5,21 @@ import java.util.List;
 
 public abstract class Category {
     private String name;
-    protected List<Product> productList;
+    private List<Product> productList;
 
     public Category(String name) {
         this.name = name;
         this.productList = new ArrayList<>();
     }
 
-    public void addProduct(Product product) {
-        this.productList.add(product);
+    public String getName() {
+        return name;
+    }
+
+
+
+    public void addProductToCategory(Product product) {
+        productList.add(product);
     }
 
 
@@ -29,9 +35,7 @@ public abstract class Category {
         }
     }
 
-    public String getName(){
-        return this.name;
-    }
+
 
 
 }

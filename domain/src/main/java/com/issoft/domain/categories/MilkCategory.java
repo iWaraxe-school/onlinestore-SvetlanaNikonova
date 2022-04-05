@@ -9,8 +9,8 @@ public class MilkCategory extends Category {
         super("Milk");
     }
 
-   //@ Override
-    //public void addProduct(Product product) {
-    //    this.productList.add(product);
-    //}
+  // @ Override
+  //  public void addProduct(Product product) {
+  //      this.productList.add(product);
+  //  }
 }

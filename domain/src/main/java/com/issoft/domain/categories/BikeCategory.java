@@ -8,7 +8,7 @@ import java.util.List;
 public class BikeCategory extends Category {
 
     public BikeCategory() {
-        super("Bikes");
+        super("Bike");
     }
 
     // @Override
