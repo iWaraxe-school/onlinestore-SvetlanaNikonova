@@ -28,15 +28,15 @@ public class StoreHelper {
             for (int i = 0; i < entry.getValue(); i++) {
 
                 Product product = new Product(
-                        populator.getProductName(entry.getKey().name),
+                        populator.getProductName(entry.getKey().getName()),
                         populator.getPrice(),
                         populator.getRate());
                 entry.getKey().addProduct(product);
             }
-            this.store.categoryList.add(entry.getKey());
+            this.store.addCategory(entry.getKey());
     }
     }
-    private  static  Map<Category, Integer> createProductListToAdd() {
+    private static Map<Category, Integer> createProductListToAdd() {
         Map<Category, Integer> productsToAdd = new HashMap<>();
 
         Reflections reflections = new Reflections("com.issoft.domain.categories");

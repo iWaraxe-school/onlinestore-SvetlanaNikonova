@@ -6,7 +6,7 @@ public class PhoneCategory extends Category {
 
 
     public PhoneCategory() {
-        super("Phones");
+        super("Phone");
     }
 
 

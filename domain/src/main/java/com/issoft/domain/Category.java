@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Category {
-    public String name;
+    private String name;
     private List<Product> productList;
 
     public Category(String name) {
@@ -12,8 +12,14 @@ public abstract class Category {
         this.productList = new ArrayList<>();
     }
 
-    public void addProduct(Product product) {
+    public String getName() {
+        return name;
+    }
 
+
+
+    public void addProductToCategory(Product product) {
+        productList.add(product);
     }
 
 
@@ -28,6 +34,8 @@ public abstract class Category {
             System.out.println(product.toString());
         }
     }
+
+
 
 
 }
