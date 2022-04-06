@@ -10,11 +10,12 @@ import java.util.Map;
 
 public class Store {
 
-    private Map<Category, Integer> categoryProductMap = new HashMap<>();
 
-    private List<Category> categoryList = new ArrayList<Category>();
 
-    public Store() {
+    private List<Category> categoryList = new ArrayList<>();
+
+    public void addCategory(Category category) {
+        categoryList.add(category);
 
     }
 
@@ -24,8 +25,6 @@ public class Store {
         }
     }
 
-    public void addCategory(Category category) {
-        categoryList.add(category);
-    }
+
 
 }
