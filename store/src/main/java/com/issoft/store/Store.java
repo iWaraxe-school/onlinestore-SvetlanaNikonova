@@ -1,18 +1,19 @@
 package com.issoft.store;
 
 import com.issoft.domain.Category;
+import com.issoft.domain.Product;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Store {
 
 
-
     private List<Category> categoryList = new ArrayList<>();
+
+
 
     public void addCategory(Category category) {
         categoryList.add(category);
@@ -25,6 +26,16 @@ public class Store {
         }
     }
 
+    public List<Product> getAllProducts() {
+        return categoryList.stream()
+                .flatMap(category -> category.getProductList().stream())
+                .collect(Collectors.toList());
+    }
 
 
+    public void sortAllProducts() {
+    }
+
+    public void getTop5() {
+    }
 }

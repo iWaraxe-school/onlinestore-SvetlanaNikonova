@@ -16,7 +16,9 @@ public abstract class Category {
         return name;
     }
 
-
+    public List<Product> getProductList() {
+        return productList;
+    }
 
     public void addProductToCategory(Product product) {
         productList.add(product);
