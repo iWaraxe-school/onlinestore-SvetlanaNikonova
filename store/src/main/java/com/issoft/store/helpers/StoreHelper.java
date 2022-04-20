@@ -92,11 +92,14 @@ public class StoreHelper {
 //        List<Product> top5 = new ArrayList<>(sortedList.subList(0, 5));
 //
 //        return sortedList;
-
-
     }
 
-}
+        public void printProducts(List<Product> products) {
+            products.forEach(System.out::println);
+        }
+    }
+
+
 
 
 
