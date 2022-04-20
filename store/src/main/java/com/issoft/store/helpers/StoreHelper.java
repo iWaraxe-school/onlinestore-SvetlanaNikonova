@@ -62,24 +62,24 @@ public class StoreHelper {
         return categoryToPut;
     }
 
-//
-//    public List<Product> sortAllProducts() throws Exception {
-//        Map<String, String> sortBy;
-//        try {
-//            XMLParser xml = new XMLParser();
-//            sortBy = xml.getAllPropertiesToSort();
-//        } catch (ParserConfigurationException e) {
-//            throw new Exception("Error : Config file exception.");
-//        }
-//        return sortAllProducts(sortBy);
-//    }
 
-    public List<Product> sortAllProducts(Map<String, String> sortBy) {
+    public List<Product> sortAllProducts() throws Exception {
+       Map<String, String> sortBy;
+      try {
+           XMLParser xml = new XMLParser();
+          sortBy = xml.getAllPropertiesToSort();
+       } catch (ParserConfigurationException e) {
+           throw new Exception("Error : Config file exception.");
+       }
+      return sortAllProducts(sortBy);
 
-        List<Product> allProducts = this.store.getAllProducts();
+   }
+     public List<Product> sortAllProducts(Map<String, String> sortBy) {
+
+       List<Product> allProducts = this.store.getAllProducts();
         allProducts.sort(new ProductComparator(sortBy));
 
-        return allProducts;
+       return allProducts;
     }
 
     public List<Product> getTopNProducts(List<Product> products, int n) {

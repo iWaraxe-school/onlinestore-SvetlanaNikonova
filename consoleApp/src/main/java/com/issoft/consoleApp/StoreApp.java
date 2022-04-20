@@ -33,12 +33,12 @@ public class StoreApp {
             System.out.println("Your command is : " + command);
             switch (command) {
                 case "sort":
-                   List<Product> products = storeHelper.sortAllProducts(Map.of("price", "desc"));
+                    List<Product> products = storeHelper.sortAllProducts();
                    storeHelper.printProducts(products);
                     break;
                 case "top":
                     System.out.println("Print top 5 products sorted via price desc.");
-                    List<Product> sortedProducts = storeHelper.sortAllProducts(Map.of("price", "desc"));
+                    List<Product> sortedProducts = storeHelper.sortAllProducts();
                     List<Product> topNProducts = storeHelper.getTopNProducts(sortedProducts, 5);
                     storeHelper.printProducts(topNProducts);
                     break;
