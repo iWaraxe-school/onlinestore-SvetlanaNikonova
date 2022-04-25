@@ -1,7 +1,5 @@
 package com.issoft.domain.categories;
 
-import com.issoft.domain.Category;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
@@ -9,15 +7,15 @@ import java.util.function.Supplier;
 public class CategoryFactory {
 
 
-    public Category getCategory(CategoryType category) {
-        return getCategoryMap().get(category).get();
+    public IProduct getCategory(ProductType product) {
+        return getProductMap().get(product).get();
     }
 
-    public Map<CategoryType, Supplier<Category>> getCategoryMap() {
-        Map<CategoryType, Supplier<Category>> categoryTypeMap = new HashMap<>();
-        categoryTypeMap.put(CategoryType.BIKE, BikeCategory::new);
-        categoryTypeMap.put(CategoryType.MILK, MilkCategory::new);
-        categoryTypeMap.put(CategoryType.PHONE, PhoneCategory::new);
+    public Map<ProductType, Supplier<IProduct>> getProductMap() {
+        Map<ProductType, Supplier<IProduct>> categoryTypeMap = new HashMap<>();
+        categoryTypeMap.put(ProductType.BIKE, BikeCategory::new);
+        categoryTypeMap.put(ProductType.MILK, MilkCategory::new);
+        categoryTypeMap.put(ProductType.PHONE, PhoneCategory::new);
         return categoryTypeMap;
     }
 
