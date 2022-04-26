@@ -1,14 +1,16 @@
 package com.issoft.domain.categories;
 
 import com.issoft.domain.Category;
-import com.issoft.domain.Product;
 
-import java.util.List;
-
-public class BikeCategory extends Category {
+public class BikeCategory extends Category implements IProduct {
 
     public BikeCategory() {
         super("Bike");
+    }
+
+    @Override
+    public void putOnShelves() {
+        System.out.println("hello from bike");
     }
 
     // @Override
