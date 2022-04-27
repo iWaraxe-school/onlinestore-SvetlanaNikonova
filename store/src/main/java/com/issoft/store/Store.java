@@ -10,6 +10,17 @@ import java.util.stream.Collectors;
 
 public class Store {
 
+    private static Store StoreSingle;
+
+
+    private Store() {}
+
+    public static Store getStore() {
+        if (StoreSingle == null){
+            return new Store();
+        } else
+        return StoreSingle;
+    }
 
     private List<Category> categoryList = new ArrayList<>();
 

@@ -12,9 +12,10 @@ import java.util.*;
 
 public class StoreApp {
 
-    public static void main(String[] args) throws IOException {
+    public static <sortList> void main(String[] args) throws IOException {
         try {
-        Store onlineStore = new Store();
+        Store onlineStore =  Store.getStore();
+
         StoreHelper storeHelper = new StoreHelper(onlineStore);
         storeHelper.fillStoreRandomly();
 //        onlineStore.printAllCategoriesAndProducts();
@@ -33,7 +34,7 @@ public class StoreApp {
             System.out.println("Your command is : " + command);
             switch (command) {
                 case "sort":
-                    List<Product> products = storeHelper.sortAllProducts();
+                    List products = storeHelper.sortAllProducts();
                    storeHelper.printProducts(products);
                     break;
                 case "top":
