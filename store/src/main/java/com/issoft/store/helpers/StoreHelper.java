@@ -14,11 +14,13 @@ import java.util.*;
 
 public class StoreHelper {
 
-    Store store;
+    public Store store;
 
     public StoreHelper(Store store) {
         this.store = store;
     }
+
+
 
     public void fillStoreRandomly() {
 
@@ -98,6 +100,8 @@ public class StoreHelper {
             products.forEach(System.out::println);
         }
     }
+
+
 
 
 

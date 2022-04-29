@@ -1,11 +1,12 @@
 package com.issoft.domain.categories;
 
 import com.issoft.domain.Category;
+import com.issoft.domain.Product;
 
-public class BikeCategory extends Category implements IProduct {
+public class BikeCategory extends Product implements IProduct {
 
     public BikeCategory() {
-        super("Bike");
+        super("Bike", 50.00, 2.00);
     }
 
     @Override

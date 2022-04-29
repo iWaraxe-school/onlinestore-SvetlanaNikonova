@@ -2,8 +2,12 @@ package com.issoft.consoleApp;
 
 
 import com.issoft.domain.Product;
+import com.issoft.domain.categories.MilkCategory;
 import com.issoft.store.Store;
+import com.issoft.store.helpers.CreatedOrder;
 import com.issoft.store.helpers.StoreHelper;
+import com.issoft.store.helpers.TimerCleanupTask;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,14 +20,27 @@ public class StoreApp {
         try {
         Store onlineStore =  Store.getStore();
 
-        StoreHelper storeHelper = new StoreHelper(onlineStore);
-        storeHelper.fillStoreRandomly();
-//        onlineStore.printAllCategoriesAndProducts();
-//        List<Product> sortedProducts = storeHelper.sortAllProducts(Map.of("price", "desc"));
+            StoreHelper storeHelper = new StoreHelper(onlineStore);
+            storeHelper.fillStoreRandomly();
+           CreatedOrder o = new CreatedOrder(storeHelper.store.getAllProducts());
+            storeHelper.sortAllProducts();
+            System.out.println("Get products");
+
+
+        //MilkCategory p = new MilkCategory();
+        //o.PutOrderToTheList(p);
+
+
+      onlineStore.printAllCategoriesAndProducts();
+   //   List<Product> sortedProducts = storeHelper.sortAllProducts(Map.of("price", "desc"));
 //        System.out.println("\n\nTOP 5 products sorted by price, desc:");
 //        storeHelper.getTopNProducts(sortedProducts, 5).forEach(System.out::println);
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerCleanupTask(o.getOrdersCompleted()),0l,60000l);
+
 
         Boolean flag = true;
         while (flag) {

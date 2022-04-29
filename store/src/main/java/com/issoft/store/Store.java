@@ -4,21 +4,19 @@ import com.issoft.domain.Category;
 import com.issoft.domain.Product;
 
 
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Store {
 
-    private static Store StoreSingle;
-
+    private static Store StoreSingle = new Store();
+  //  public ObjectInputStream.ValidationList purchasedCollection;
 
     private Store() {}
 
     public static Store getStore() {
-        if (StoreSingle == null){
-            return new Store();
-        } else
         return StoreSingle;
     }
 
