@@ -10,20 +10,16 @@ import java.util.stream.Collectors;
 
 public class Store {
 
-    private static Store StoreSingle;
-
+    private final static Store storeSingle = new Store();
+  //  public ObjectInputStream.ValidationList purchasedCollection;
 
     private Store() {}
 
     public static Store getStore() {
-        if (StoreSingle == null){
-            return new Store();
-        } else
-        return StoreSingle;
+        return storeSingle;
     }
 
-    private List<Category> categoryList = new ArrayList<>();
-
+    private final List<Category> categoryList = new ArrayList<>();
 
 
     public void addCategory(Category category) {

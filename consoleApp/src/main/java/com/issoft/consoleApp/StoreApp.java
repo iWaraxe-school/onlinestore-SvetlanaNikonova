@@ -2,8 +2,12 @@ package com.issoft.consoleApp;
 
 
 import com.issoft.domain.Product;
+import com.issoft.domain.categories.PhoneCategory;
 import com.issoft.store.Store;
+import com.issoft.store.helpers.CreatedOrder;
 import com.issoft.store.helpers.StoreHelper;
+import com.issoft.store.helpers.TimerCleanupTask;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,20 +16,52 @@ import java.util.*;
 
 public class StoreApp {
 
-    public static <sortList> void main(String[] args) throws IOException {
-        try {
-        Store onlineStore =  Store.getStore();
+    public static <sortList> void main(String[] args) throws Exception {
+        List<Product> totalProducts = Collections.synchronizedList(new ArrayList<>()); // bookkeeping
+            Store onlineStore = Store.getStore();
+            StoreHelper storeHelper = new StoreHelper(onlineStore);
 
-        StoreHelper storeHelper = new StoreHelper(onlineStore);
-        storeHelper.fillStoreRandomly();
-//        onlineStore.printAllCategoriesAndProducts();
-//        List<Product> sortedProducts = storeHelper.sortAllProducts(Map.of("price", "desc"));
-//        System.out.println("\n\nTOP 5 products sorted by price, desc:");
-//        storeHelper.getTopNProducts(sortedProducts, 5).forEach(System.out::println);
+            storeHelper.fillStoreRandomly();
+            onlineStore.printAllCategoriesAndProducts();
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            CreatedOrder order = new CreatedOrder(storeHelper.store.getAllProducts());
+            CreatedOrder order1 = new CreatedOrder(storeHelper.store.getAllProducts());
+            CreatedOrder order2 = new CreatedOrder(storeHelper.store.getAllProducts()); // 3 customers
+            order.setTotalOrder(totalProducts);
+            order1.setTotalOrder(totalProducts);
+            order2.setTotalOrder(totalProducts);
+            storeHelper.sortAllProducts();
 
-        Boolean flag = true;
+            Thread thread = new Thread(order);
+            thread.start();
+            Thread thread1 = new Thread(order1);
+            thread1.start();
+            Thread thread2 = new Thread(order2);
+            thread2.start();
+            thread.join();
+            thread1.join();
+            thread2.join();
+
+        System.out.println("**************************");
+        System.out.println("Total bought products");
+        System.out.println("**************************");
+        totalProducts.forEach(System.out::println);
+
+            //     System.out.println("Get products");
+
+
+            //  onlineStore.printAllCategoriesAndProducts();
+            //  List<Product> sortedProducts = storeHelper.sortAllProducts(Map.of("price", "desc"));
+            //  System.out.println("\n\nTOP 5 products sorted by price, desc:");
+            //  storeHelper.getTopNProducts(sortedProducts, 5).forEach(System.out::println);
+
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+            Timer timer = new Timer();
+            timer.schedule(new TimerCleanupTask(order.getTotalOrder()), 0L, 60_000L);
+
+     /*
+        boolean flag = true;
         while (flag) {
 
             System.out.println("Enter command sort/top/quit: ");
@@ -59,4 +95,9 @@ public class StoreApp {
 
 }
 
+}
+
+      */
+
+    }
 }

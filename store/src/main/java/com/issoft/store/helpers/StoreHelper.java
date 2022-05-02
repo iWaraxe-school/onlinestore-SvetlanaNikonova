@@ -5,6 +5,7 @@ import com.issoft.domain.Category;
 import com.issoft.domain.Product;
 import com.issoft.store.Store;
 import com.issoft.store.helpers.comparators.ProductComparator;
+import com.issoft.store.helpers.comparators.SortOrder;
 import com.issoft.store.helpers.comparators.XMLParser;
 import org.reflections.Reflections;
 
@@ -14,11 +15,13 @@ import java.util.*;
 
 public class StoreHelper {
 
-    Store store;
+    public Store store;
 
     public StoreHelper(Store store) {
         this.store = store;
     }
+
+
 
     public void fillStoreRandomly() {
 
@@ -48,7 +51,7 @@ public class StoreHelper {
         for (Class<? extends Category> type : subTypes) {
             try {
                 Random random = new Random();
-                categoryToPut.put(type.getConstructor().newInstance(), 10/*random.nextInt(10)*/);
+                categoryToPut.put(type.getConstructor().newInstance(), random.nextInt(10));
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
@@ -85,19 +88,21 @@ public class StoreHelper {
     public List<Product> getTopNProducts(List<Product> products, int n) {
 
         return products.subList(0, n);
-//        Map<String, String> sortBy = new HashMap<>();
-//        sortBy.put("price", SortOrder.DESC.toString());
-//
-//        List<Product> sortedList = sortAllProducts(sortBy);
-//        List<Product> top5 = new ArrayList<>(sortedList.subList(0, 5));
-//
-//        return sortedList;
+     //  Map<String, String> sortBy = new HashMap<>();
+     //   sortBy.put("price", SortOrder.DESC.toString());
+
+     //   List<Product> sortedList = sortAllProducts(sortBy);
+    //   List<Product> top5 = new ArrayList<>(sortedList.subList(0, 5));
+
+    //   return sortedList;
     }
 
         public void printProducts(List<Product> products) {
             products.forEach(System.out::println);
         }
     }
+
+
 
 
 
