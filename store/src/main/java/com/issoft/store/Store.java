@@ -4,24 +4,22 @@ import com.issoft.domain.Category;
 import com.issoft.domain.Product;
 
 
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Store {
 
-    private static Store StoreSingle = new Store();
+    private final static Store storeSingle = new Store();
   //  public ObjectInputStream.ValidationList purchasedCollection;
 
     private Store() {}
 
     public static Store getStore() {
-        return StoreSingle;
+        return storeSingle;
     }
 
-    private List<Category> categoryList = new ArrayList<>();
-
+    private final List<Category> categoryList = new ArrayList<>();
 
 
     public void addCategory(Category category) {

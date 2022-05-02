@@ -4,28 +4,44 @@ import com.issoft.domain.Product;
 
 import java.util.List;
 
-public class CreatedOrder {
+public class CreatedOrder implements Runnable{
 
-    private List<Product> purchasedCollection;
-    private List<Product> ordersCompleted;
+    private final List<Product> cart;
+    private List<Product> totalOrder;
 
-    public void setOrdersCompleted(List<Product> ordersCompleted) {
-        this.ordersCompleted = ordersCompleted;
+    public void setTotalOrder(List<Product> totalOrder) {
+        this.totalOrder = totalOrder;
     }
 
-    public List<Product> getOrdersCompleted() {
-        return ordersCompleted;
+    public List<Product> getTotalOrder() {
+        return totalOrder;
     }
 
-    public CreatedOrder(List<Product> purchasedCollection) {
-        super();
-        this.purchasedCollection = purchasedCollection;
+    public CreatedOrder(List<Product> cart) {
+        this.cart = cart;
+        }
 
-        for (Product product : purchasedCollection) {
-            Thread thread = new Thread();
+    @Override
+    public void run() {
+        sleep();
+        System.out.println("Starting order");
+        for (Product product :
+                cart) {
+            System.out.println("Product " + product);
+            totalOrder.add(product);
+        }
+        System.out.println("Finish order");
+    }
+
+    private void sleep() {
+        try {
+            Thread.sleep(30_000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
+
 
 
 

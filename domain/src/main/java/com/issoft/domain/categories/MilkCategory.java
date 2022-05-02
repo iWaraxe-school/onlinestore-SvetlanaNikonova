@@ -3,10 +3,13 @@ package com.issoft.domain.categories;
 import com.issoft.domain.Category;
 import com.issoft.domain.Product;
 
-public class MilkCategory extends Product implements IProduct {
+public class MilkCategory extends Category implements IProduct {
 
     public MilkCategory() {
-        super("Milk", 20.0, 3.00);
+        super("Milk products");
+        addProductToCategory(new Product("Milk",2.00, 1.5));
+        addProductToCategory(new Product("Kefir",1.00, 1.5));
+        addProductToCategory(new Product("Yougurt",2.50, 2.0));
     }
 
     @Override
