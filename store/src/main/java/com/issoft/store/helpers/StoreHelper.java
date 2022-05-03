@@ -100,7 +100,11 @@ public class StoreHelper {
         public void printProducts(List<Product> products) {
             products.forEach(System.out::println);
         }
+
+    public void createOrder(String productName) {
+
     }
+}
 
 
 
