@@ -6,12 +6,13 @@ import com.issoft.domain.Product;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 public class Store {
 
     private final static Store storeSingle = new Store();
-  //  public ObjectInputStream.ValidationList purchasedCollection;
+    //public ObjectInputStream.ValidationList purchasedCollection;
 
     private Store() {}
 
@@ -19,7 +20,9 @@ public class Store {
         return storeSingle;
     }
 
-    private final List<Category> categoryList = new ArrayList<>();
+    public List<Category> categoryList = new ArrayList<>();
+    private static CopyOnWriteArrayList<Product> products = new CopyOnWriteArrayList<>();
+    public static List<Product> purchasedProductList = new ArrayList<>();
 
 
     public void addCategory(Category category) {
@@ -44,5 +47,9 @@ public class Store {
     }
 
     public void getTop5() {
+    }
+
+    public void printListProducts(List<Product> purchasedProductList) {
+
     }
 }

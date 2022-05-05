@@ -4,7 +4,7 @@ package com.issoft.consoleApp;
 import com.issoft.domain.Product;
 import com.issoft.domain.categories.PhoneCategory;
 import com.issoft.store.Store;
-import com.issoft.store.helpers.CreatedOrder;
+//import com.issoft.store.helpers.CreatedOrder;
 import com.issoft.store.helpers.StoreHelper;
 import com.issoft.store.helpers.TimerCleanupTask;
 
@@ -16,8 +16,8 @@ import java.util.*;
 
 public class StoreApp {
 
-    public static <sortList> void main(String[] args) throws Exception {
-        List<Product> totalProducts = Collections.synchronizedList(new ArrayList<>());// bookkeeping
+    public static void main(String[] args)  {
+
         try{
         Store onlineStore = Store.getStore();
         StoreHelper storeHelper = new StoreHelper(onlineStore);
@@ -25,41 +25,18 @@ public class StoreApp {
         storeHelper.fillStoreRandomly();
         onlineStore.printAllCategoriesAndProducts();
 
-        CreatedOrder order = new CreatedOrder(storeHelper.store.getAllProducts());
-        CreatedOrder order1 = new CreatedOrder(storeHelper.store.getAllProducts());
-        CreatedOrder order2 = new CreatedOrder(storeHelper.store.getAllProducts()); // 3 customers
-        order.setTotalOrder(totalProducts);
-        order1.setTotalOrder(totalProducts);
-        order2.setTotalOrder(totalProducts);
-        storeHelper.sortAllProducts();
 
-        Thread thread = new Thread(order);
-        thread.start();
-        Thread thread1 = new Thread(order1);
-        thread1.start();
-        Thread thread2 = new Thread(order2);
-        thread2.start();
-        thread.join();
-        thread1.join();
-        thread2.join();
-
-        System.out.println("**************************");
-        System.out.println("Total bought products");
-        System.out.println("**************************");
-        totalProducts.forEach(System.out::println);
-
-
-        //  onlineStore.printAllCategoriesAndProducts();
-        //  List<Product> sortedProducts = storeHelper.sortAllProducts(Map.of("price", "desc"));
-        //  System.out.println("\n\nTOP 5 products sorted by price, desc:");
-        //  storeHelper.getTopNProducts(sortedProducts, 5).forEach(System.out::println);
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
+            Timer timer = new Timer();
+
+            timer.schedule(new TimerCleanupTask(),0, 30000);
 
 
 
-        boolean flag = true;
+
+        Boolean flag = true;
         while (flag) {
 
             System.out.println("Enter command sort/top/createOrder/quit: ");
@@ -78,20 +55,22 @@ public class StoreApp {
                     storeHelper.printProducts(topNProducts);
                     break;
                 case "createOrder":
-                    List<Product> totalProducts3 = new ArrayList<>();
-                    CreatedOrder order3 = new CreatedOrder(storeHelper.store.getAllProducts());
-                    order3.setTotalOrder(totalProducts);
-                    totalProducts.forEach(System.out::println);
+                    System.out.println("Enter name of product to order: ");
+                    String productName = reader.readLine();
+
+                    storeHelper.createOrder(productName);
                     break;
                 case "quit":
+                    timer.cancel();
+                    storeHelper.shutdownThreads();
+
                     flag = false;
                     break;
                 default:
                     System.out.println("The command is not recognized.");
             }
         }
-            Timer timer = new Timer();
-            timer.schedule(new TimerCleanupTask(order.getTotalOrder()), 0L, 60_000L);
+
 
          } catch(
         Exception e)

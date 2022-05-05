@@ -1,9 +1,9 @@
-package com.issoft.store.helpers;
+//package com.issoft.store.helpers;
 
 import com.issoft.domain.Product;
 
 import java.util.List;
-
+/*
 public class CreatedOrder implements Runnable{
 
     private final List<Product> cart;
@@ -41,7 +41,7 @@ public class CreatedOrder implements Runnable{
         }
     }
 }
-
+*/
 
 
 
