@@ -41,10 +41,12 @@ public class ProductComparator implements Comparator<Product> {
     private  Object getPropertyValue(Product product, String property) throws Exception {
 
         try {
-            Field declaredField = product.getClass().getDeclaredField(property);
-            declaredField.setAccessible(true);
-            Object fieldValue = declaredField.get(product);
-            return fieldValue;
+            String propertyValue = product.getClass().getDeclaredField(property).get(product).toString();
+            return  propertyValue;
+        //    Field declaredField = product.getClass().getDeclaredField(property);
+        //    declaredField.setAccessible(true);
+        //    Object fieldValue = declaredField.get(product);
+        //    return fieldValue;
 
         }
         catch (NoSuchFieldException | IllegalAccessException ex) {

@@ -29,14 +29,13 @@ public class StoreApp {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-            Timer timer = new Timer();
-
-            timer.schedule(new TimerCleanupTask(),0, 30000);
-
+           Timer timer = new Timer();
+           timer.schedule(new TimerCleanupTask(),0, 60000);
 
 
 
-        Boolean flag = true;
+
+        boolean flag = true;
         while (flag) {
 
             System.out.println("Enter command sort/top/createOrder/quit: ");
@@ -70,6 +69,7 @@ public class StoreApp {
                     System.out.println("The command is not recognized.");
             }
         }
+
 
 
          } catch(

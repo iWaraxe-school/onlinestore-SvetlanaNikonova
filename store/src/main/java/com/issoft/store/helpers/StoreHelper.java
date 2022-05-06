@@ -91,16 +91,16 @@ public class StoreHelper {
     public List<Product> getTopNProducts(List<Product> products, int n) {
 
         return products.subList(0, n);
-        //  Map<String, String> sortBy = new HashMap<>();
-        //   sortBy.put("price", SortOrder.DESC.toString());
+     //    Map<String, String> sortBy = new HashMap<>();
+     //      sortBy.put("price", SortOrder.DESC.toString());
 
-        //   List<Product> sortedList = sortAllProducts(sortBy);
-        //   List<Product> top5 = new ArrayList<>(sortedList.subList(0, 5));
+     //      List<Product> sortedList = sortAllProducts(sortBy);
+       //    List<Product> top5 = new ArrayList<>(sortedList.subList(0, 5));
 
-        //   return sortedList;
+      //     return sortedList;
     }
 
-   public void printProducts(List<Product> products) {
+    public void printProducts(List<Product> products) {
        products.forEach(System.out::println);
     }
 
@@ -137,10 +137,11 @@ public class StoreHelper {
     }
 
     private Product getOrderedProduct(String productName) {
-        Optional<Product> orderedProduct = store.getAllProducts().stream()
-                .filter(x -> x.name.equals(productName))
-                .findFirst();
-        return null;
+        return Optional.of(productName)
+                .map(name -> store.getAllProducts().stream()
+                        .filter(product -> name.equals(product.name))
+                        .findFirst().orElseThrow())
+                .orElseThrow();
     }
 
 }

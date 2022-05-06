@@ -21,7 +21,7 @@ public class Store {
     }
 
     public List<Category> categoryList = new ArrayList<>();
-    private static CopyOnWriteArrayList<Product> products = new CopyOnWriteArrayList<>();
+    private final static CopyOnWriteArrayList<Product> products = new CopyOnWriteArrayList<>();
     public static List<Product> purchasedProductList = new ArrayList<>();
 
 

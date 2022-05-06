@@ -7,9 +7,7 @@ public class MilkCategory extends Category implements IProduct {
 
     public MilkCategory() {
         super("Milk products");
-        addProductToCategory(new Product("Milk",2.00, 1.5));
-        addProductToCategory(new Product("Kefir",1.00, 1.5));
-        addProductToCategory(new Product("Yougurt",2.50, 2.0));
+
     }
 
     @Override
