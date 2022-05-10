@@ -13,14 +13,14 @@ public class RandomStorePopulator {
     public String getProductName(String categoryName) {
 
         switch (categoryName) {
-            case "Bike":
+            case "Bike products":
                 return faker.funnyName().name();
-            case "Phone":
+            case "Phone products":
                 return faker.country().name();
-            case "Milk":
+            case "Milk products":
                 return faker.food().ingredient();
             default:
-                return null;
+                return faker.address().city();
         }
 
     }

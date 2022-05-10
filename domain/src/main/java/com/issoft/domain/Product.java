@@ -1,7 +1,8 @@
 package com.issoft.domain;
 
 public class Product {
-    private String name;
+    public String name;
+  //  private String name;
     private Double price;
     private Double rate;
 

@@ -7,9 +7,7 @@ public class BikeCategory extends Category implements IProduct {
 
     public BikeCategory() {
         super("Bike products");
-        addProductToCategory(new Product("Cross", 550.00, 2.5));
-        addProductToCategory(new Product("Azimut", 150.00, 1.5));
-        addProductToCategory(new Product("Romet", 400.00, 1.5));
+
     }
 
     @Override
