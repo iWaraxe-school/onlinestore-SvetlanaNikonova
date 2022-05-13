@@ -3,7 +3,7 @@ package com.issoft.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Category {
+public class Category {
     private String name;
     private List<Product> productList;
 

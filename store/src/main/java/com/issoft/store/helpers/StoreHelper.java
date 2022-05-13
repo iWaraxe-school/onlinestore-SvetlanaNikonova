@@ -5,8 +5,8 @@ import com.issoft.domain.Category;
 import com.issoft.domain.Product;
 import com.issoft.store.Store;
 import com.issoft.store.helpers.comparators.ProductComparator;
-import com.issoft.store.helpers.comparators.SortOrder;
 import com.issoft.store.helpers.comparators.XMLParser;
+import com.issoft.store.helpers.populators.RandomStorePopulator;
 import org.reflections.Reflections;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -35,6 +35,7 @@ public class StoreHelper {
 
                 Product product = new Product(
                         populator.getProductName(entry.getKey().getName()),
+                        populator.getProductCategory(),
                         populator.getPrice(),
                         populator.getRate());
                 entry.getKey().addProductToCategory(product);
