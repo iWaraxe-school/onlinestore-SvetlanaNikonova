@@ -2,13 +2,14 @@ package com.issoft.domain;
 
 public class Product {
     public String name;
-  //  private String name;
-    private Double price;
-    private Double rate;
+    public String category;
+    public Double price;
+    public Double rate;
 
 
-    public  Product(String name, Double price, Double rate) {
+    public  Product(String name, String category, Double price, Double rate) {
         this.name = name;
+        this.category = category;
         this.price = price;
         this.rate = rate;
     }

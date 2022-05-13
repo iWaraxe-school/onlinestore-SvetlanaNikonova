@@ -2,15 +2,13 @@ package com.issoft.consoleApp;
 
 
 import com.issoft.domain.Product;
-import com.issoft.domain.categories.PhoneCategory;
 import com.issoft.store.Store;
-//import com.issoft.store.helpers.CreatedOrder;
 import com.issoft.store.helpers.StoreHelper;
 import com.issoft.store.helpers.TimerCleanupTask;
+import com.issoft.store.helpers.populators.*;
 
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
@@ -18,9 +16,22 @@ public class StoreApp {
 
     public static void main(String[] args)  {
 
+        IPopulator populator = null;
+
         try{
         Store onlineStore = Store.getStore();
         StoreHelper storeHelper = new StoreHelper(onlineStore);
+
+            CategoryEnum populatorType = CategoryEnum.DBPopulator;
+
+            switch (populatorType) {
+                case RandomStorePopulator:
+                    populator = new RandomStorePopulator();
+                    break;
+                case DBPopulator:
+                    populator = new DBPopulator();
+                    break;
+            }
 
         storeHelper.fillStoreRandomly();
         onlineStore.printAllCategoriesAndProducts();
