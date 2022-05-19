@@ -14,7 +14,9 @@ public class Store {
     private final static Store storeSingle = new Store();
     //public ObjectInputStream.ValidationList purchasedCollection;
 
-    private Store() {}
+
+    private Store() {
+    }
 
     public static Store getStore() {
         return storeSingle;
@@ -23,6 +25,8 @@ public class Store {
     public List<Category> categoryList = new ArrayList<>();
     private final static CopyOnWriteArrayList<Product> products = new CopyOnWriteArrayList<>();
     public static List<Product> purchasedProductList = new ArrayList<>();
+
+
 
 
     public void addCategory(Category category) {

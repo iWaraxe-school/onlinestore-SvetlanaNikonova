@@ -92,13 +92,7 @@ public class StoreHelper {
     public List<Product> getTopNProducts(List<Product> products, int n) {
 
         return products.subList(0, n);
-     //    Map<String, String> sortBy = new HashMap<>();
-     //      sortBy.put("price", SortOrder.DESC.toString());
 
-     //      List<Product> sortedList = sortAllProducts(sortBy);
-       //    List<Product> top5 = new ArrayList<>(sortedList.subList(0, 5));
-
-      //     return sortedList;
     }
 
     public void printProducts(List<Product> products) {

@@ -22,7 +22,7 @@ public class StoreApp {
         Store onlineStore = Store.getStore();
         StoreHelper storeHelper = new StoreHelper(onlineStore);
 
-            CategoryEnum populatorType = CategoryEnum.DBPopulator;
+            CategoryEnum populatorType = CategoryEnum.HttpPopulator;
 
             switch (populatorType) {
                 case RandomStorePopulator:
@@ -30,6 +30,9 @@ public class StoreApp {
                     break;
                 case DBPopulator:
                     populator = new DBPopulator();
+                    break;
+                case HttpPopulator:
+                    populator = new HttpPopulator();
                     break;
             }
 
@@ -49,7 +52,7 @@ public class StoreApp {
         boolean flag = true;
         while (flag) {
 
-            System.out.println("Enter command sort/top/createOrder/quit: ");
+            System.out.println("Enter command sort/top/createOrder/ad/quit: ");
             String command = reader.readLine();
 
             System.out.println("Your command is : " + command);
@@ -64,6 +67,20 @@ public class StoreApp {
                     List<Product> topNProducts = storeHelper.getTopNProducts(sortedProducts, 5);
                     storeHelper.printProducts(topNProducts);
                     break;
+                case "addToCart":
+                    System.out.println("Enter name of product to add");
+                    String product = reader.readLine();
+
+                    if (populator instanceof  HttpPopulator) {
+                        ((HttpPopulator) populator).addToCart(product);
+                        System.out.println("Products in the cart:");
+                        onlineStore.printListProducts(((HttpPopulator)populator).getProducts());
+                    }
+                    else {
+                        System.out.println(" 'Add to cart' command is not found");
+                    }
+                    break;
+
                 case "createOrder":
                     System.out.println("Enter name of product to order: ");
                     String productName = reader.readLine();
