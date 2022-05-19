@@ -52,7 +52,7 @@ public class StoreApp {
         boolean flag = true;
         while (flag) {
 
-            System.out.println("Enter command sort/top/createOrder/ad/quit: ");
+            System.out.println("Enter command sort/top/createOrder/addToCart/quit: ");
             String command = reader.readLine();
 
             System.out.println("Your command is : " + command);
