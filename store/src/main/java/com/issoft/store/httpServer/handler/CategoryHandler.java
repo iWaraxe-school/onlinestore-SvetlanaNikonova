@@ -2,6 +2,7 @@ package com.issoft.store.httpServer.handler;
 
 import com.issoft.domain.Category;
 import com.issoft.store.helpers.populators.DBPopulator;
+import com.issoft.store.helpers.populators.HttpPopulator;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -22,7 +23,7 @@ public class CategoryHandler implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         List<Category> categories;
         try {
-            categories = new DBPopulator().getCategories();
+            categories = new HttpPopulator().getCategories();
         } catch (Exception e) {
             e.printStackTrace();
             categories = new ArrayList<>();

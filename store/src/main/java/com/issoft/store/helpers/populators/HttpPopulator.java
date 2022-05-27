@@ -18,9 +18,9 @@ public class HttpPopulator implements IHttpPopulator, IPopulator{
     @Override
     public void addToCart(String productName) {
 
-        Product product1 = new Product(productName, "Milk", 2.00, 1.5);
+        Product product = new Product(productName, "Milk", 2.00, 1.5);
 
-        httpClient.addProductToCart(product1);
+        httpClient.addProductToCart(product);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class HttpPopulator implements IHttpPopulator, IPopulator{
 
     @Override
     public List<Product> getProductsForCategory(ProductCategoryEnum category) {
-        return null;
+        return List.of(new Product("Test milk", "Milk", 1.0, 1.5));
     }
 }
 

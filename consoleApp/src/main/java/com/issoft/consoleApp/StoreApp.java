@@ -6,6 +6,7 @@ import com.issoft.store.Store;
 import com.issoft.store.helpers.StoreHelper;
 import com.issoft.store.helpers.TimerCleanupTask;
 import com.issoft.store.helpers.populators.*;
+import com.issoft.store.httpServer.AppHttpServer;
 
 
 import java.io.BufferedReader;
@@ -15,6 +16,10 @@ import java.util.*;
 public class StoreApp {
 
     public static void main(String[] args)  {
+
+    //    IPopulator populator = null;
+        AppHttpServer server = new AppHttpServer();
+        server.startServer();
 
         IPopulator populator = null;
 
@@ -74,7 +79,7 @@ public class StoreApp {
                     if (populator instanceof  HttpPopulator) {
                         ((HttpPopulator) populator).addToCart(product);
                         System.out.println("Products in the cart:");
-                        onlineStore.printListProducts(((HttpPopulator)populator).getProducts());
+                        onlineStore.printListProducts(((HttpPopulator)populator).getProductsForCategory(ProductCategoryEnum.MILK));
                     }
                     else {
                         System.out.println(" 'Add to cart' command is not found");
@@ -105,6 +110,8 @@ public class StoreApp {
 
         {
             System.out.println("Error: the exception was thrown with message:" + e.getMessage());
+            e.printStackTrace();
+
         }
 
 

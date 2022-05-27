@@ -54,6 +54,8 @@ public class Store {
     }
 
     public void printListProducts(List<Product> purchasedProductList) {
-
+        purchasedProductList.forEach(product -> {
+            System.out.println(product.toString());
+        });
     }
 }

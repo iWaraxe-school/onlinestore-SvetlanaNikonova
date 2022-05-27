@@ -5,10 +5,11 @@ import com.issoft.domain.Product;
 
 import java.util.List;
 
-public interface IHttpPopulator {
+public interface IHttpPopulator extends IPopulator{
 
     List<Category> getAllCategories();
 
-    void addToCart(String product);
+    void addToCart(String product) throws Exception;
+
 }
 

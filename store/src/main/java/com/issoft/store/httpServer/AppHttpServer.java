@@ -2,6 +2,7 @@ package com.issoft.store.httpServer;
 
 import com.issoft.store.httpServer.handler.CartHandler;
 import com.issoft.store.httpServer.handler.CategoryHandler;
+import com.issoft.store.httpServer.handler.ProductHandler;
 import com.sun.net.httpserver.BasicAuthenticator;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
@@ -17,6 +18,7 @@ public class AppHttpServer {
         try {
             HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
             createContext(server,"/categories", new CategoryHandler());
+            createContext(server,"/products", new ProductHandler());
             createContext(server,"/cart", new CartHandler());
             server.setExecutor(null);
             server.start();

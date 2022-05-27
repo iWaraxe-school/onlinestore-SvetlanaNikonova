@@ -54,6 +54,7 @@ public class HttpClient {
         ObjectMapper mapper = new ObjectMapper();
         HttpURLConnection connection = new HttpClient().getConnection("/cart", HttpMethod.POST);
         connection.setDoOutput(true);
+
         try {
             OutputStream os = connection.getOutputStream();
             byte[] data = mapper.writeValueAsBytes(product);
@@ -77,13 +78,19 @@ public class HttpClient {
 
     private HttpURLConnection getConnection(String endpoint, HttpMethod method) {
         try {
+        //    AppHttpServer server = new AppHttpServer();
+        //    server.startServer();
+
             URL address = new URL("http", "localhost", 8080, endpoint);
+
             String credentials = Base64.getEncoder()
                     .encodeToString((format(BASIC_AUTH_CREDENTIALS_FORMAT, USERNAME, PASSWORD))
                             .getBytes(StandardCharsets.UTF_8));
+
             HttpURLConnection connection = (HttpURLConnection) address.openConnection();
             connection.setRequestMethod(method.name());
             connection.setRequestProperty("Authorization", "Basic " + credentials);
+
             return connection;
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage(), e);
