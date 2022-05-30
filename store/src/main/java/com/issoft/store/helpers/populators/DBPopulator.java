@@ -45,6 +45,10 @@ public class DBPopulator implements IPopulator{
     public List<Product> getProductsForCategory(ProductCategoryEnum categoryName){
 
         try {
+            if (dbManager.createTableIfDoesNotExist()) {
+                fillDbByFaker();
+            }
+
             return dbManager.getProductsForCategory(categoryName.name());
 
         }catch (Exception e) {

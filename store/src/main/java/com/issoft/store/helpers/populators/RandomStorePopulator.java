@@ -4,6 +4,7 @@ package com.issoft.store.helpers.populators;
 import com.github.javafaker.Faker;
 import com.issoft.domain.Category;
 import com.issoft.domain.Product;
+import com.issoft.store.Store;
 import org.reflections.Reflections;
 
 import java.util.*;
@@ -84,7 +85,7 @@ public class RandomStorePopulator implements IPopulator {
 
     }
 
-    //JUST FOR TESTING ENUMS, MIGhT UPDATE THE REAL getProductName IF WORKING
+    /*JUST FOR TESTING ENUMS, MIGhT UPDATE THE REAL getProductName IF WORKING
     public String getProductName2(String categoryName) {
 
         switch (categoryName) {
@@ -98,7 +99,7 @@ public class RandomStorePopulator implements IPopulator {
                 return faker.address().city();
         }
 
-    }
+    }*/
 
     public double getPrice() {
 
@@ -109,6 +110,10 @@ public class RandomStorePopulator implements IPopulator {
 
         return faker.number().randomDouble(1, 0, 5);
     }
+  /*  @Override
+    public void addToCart(Product product) {
+        Store store = Store.getInstance();
+        store.getPurchasedItems().add(product); */
 
 
 }
